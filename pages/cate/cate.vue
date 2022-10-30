@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- <my-search :bgcolor="'pink'"></my-search> -->
+    <my-search @click="gotoSearch"></my-search>
     <view class="scroll-view-container">
       <!-- 左侧滑动区域-->
       <scroll-view scroll-y="true" :style="{height: wh+'px'}" class="left-scroll-view">
@@ -42,7 +44,7 @@
     },
     onLoad() {
       const sysInfo=uni.getSystemInfoSync()
-      this.wh=sysInfo.windowHeight
+      this.wh=sysInfo.windowHeight-36
       this.getCateList()
     },
     methods:{
@@ -63,6 +65,11 @@
       gotoGoodsList(obj){
         uni.navigateTo({
           url:'/subpkg/goods_list/goods_list?cid='+obj.cat_id
+        })
+      },
+      gotoSearch(){
+        uni.navigateTo({
+          url:'/subpkg/search/search'
         })
       }
     }
